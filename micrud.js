@@ -1,17 +1,17 @@
 function Nuevo(){
 	$("#tblData tbody").append(
 		"<tr>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><input type='text' class='form-control'/></td>"+
-		"<td><button class='btn btn-info btnSave'>G</button><button class='btnDelete btn btn-danger'>E</button></td>"+
+		"<td><input type='text' id='id' class='form-control'/></td>"+
+		"<td><input type='text' id='time' class='form-control'/></td>"+
+		"<td><input type='text' id='date' class='form-control'/></td>"+
+		"<td><input type='text' id='d' class='form-control'/></td>"+
+		"<td><input type='text' id='u' class='form-control'/></td>"+
+		"<td><input type='text' id='estado' class='form-control'/></td>"+
+		"<td><input type='text' id='monto' class='form-control'/></td>"+
+		"<td><input type='text' id='uS' class='form-control'/></td>"+
+		"<td><input type='text' id='idCuentaContable' class='form-control'/></td>"+
+		"<td><input type='text' id='num' class='form-control'/></td>"+
+		"<td><button class='btn btn-info btnSave'>Guardar</button><button class='btnDelete btn btn-danger'>Eliminar</button></td>"+
 		"</tr>");
 	
 		$(".btnSave").bind("click", Grabar);		
@@ -26,8 +26,8 @@ function Eliminar(){
 
 
 function Grabar(){
-	var par = $(this).parent().parent(); //tr
-	var tdid = par.children("td:nth-child(1)");
+	var par = $(this).parent().parent();	//tr
+	var tdid = par.children("td:nth-child(1)");	
 	var tdtimezone  = par.children("td:nth-child(2)");
 	var tddate  = par.children("td:nth-child(3)");
 	var tdd  = par.children("td:nth-child(4)");
@@ -38,7 +38,7 @@ function Grabar(){
 	var tdidCuentaContable  = par.children("td:nth-child(9)");
 	var tdnum  = par.children("td:nth-child(10)");
 	var tdButtons  = par.children("td:nth-child(11)");
-	
+
 	tdid.html(tdid.children("input[type=text]").val());
 	tdtimezone.html(tdtimezone.children("input[type=text]").val());
 	tddate.html(tddate.children("input[type=text]").val());
@@ -49,21 +49,23 @@ function Grabar(){
 	tduS.html(tduS.children("input[type=text]").val());
 	tdidCuentaContable.html(tdidCuentaContable.children("input[type=text]").val());
 	tdnum.html(tdnum.children("input[type=text]").val());
-	tdButtons.html("<button class='btn btn-info btnSave'>G</button><button class='btnEdit btn btn-success'>C</button>");
+	tdButtons.html("<button class='btn btn-success btnEdit'>Editar</button><button class='btnDelete btn btn-danger'>Eiminar</button>");
 
 	$(".btnEdit").bind("click", Editar);
 	$(".btnDelete").bind("click", Eliminar);
-
+	
+	//pa guardar en la BDD
 	$.ajax({
 		type:'POST',
-		url:'crudlogic.php',
-		data:{'id':tdid,'timezone':tdtimezone,
-		'date':tddate,'d':tdd,'u':tdu,
-		'estado':tdestado,'monto':tdmonto,'uS':tduS,'idCuentaContable':tdidCuentaContable,'num':tdnum},
-		success: function(data){
-			alert('Success!');
+		url:'crudlogic.php?p=add',
+		data:'id='+tdid+'&timezone='+tdtimezone+'&date='+tddate+'&d='+tdd+'&u='+tdu+'&estado='+tdestado+'&monto='+tdmonto+'&uS='+tduS+'&idCuentaContable='+tdidCuentaContable+'&num='+tdnum,
+		success: function(){
+			alert();
+		},
+		error: function(){
+			alert('error!'+data);
 		}
-		
+
 	});
 
 }; 
