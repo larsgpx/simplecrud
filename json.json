@@ -1,0 +1,44 @@
+{
+    "entidad": [
+        {
+            "id": 6,
+            "f": {
+                "date": "2017-08-24 00:00:00.000000",
+                "timezone_type": 3,
+                "timezone": "America/Lima"
+            },
+            "h": {
+                "date": "1970-01-01 14:29:11.000000",
+                "timezone_type": 3,
+                "timezone": "America/Lima"
+            },
+            "d": "caja jl",
+            "u": "Gustavo gamarra",
+            "estado": "no",
+            "monto": "2000",
+            "uS": "Gustavo gamarra",
+            "idCuentaContable": 1,
+            "num": "0110000000"
+        },
+        {
+            "id": 7,
+            "f": {
+                "date": "2017-08-25 00:00:00.000000",
+                "timezone_type": 3,
+                "timezone": "America/Lima"
+            },
+            "h": {
+                "date": "1970-01-01 12:28:38.000000",
+                "timezone_type": 3,
+                "timezone": "America/Lima"
+            },
+            "d": "caja jl",
+            "u": "Gustavo gamarra",
+            "estado": "si",
+            "monto": "2000",
+            "uS": "Gustavo gamarra",
+            "idCuentaContable": 1,
+            "num": "0110000000"
+        }
+    ]
+}
